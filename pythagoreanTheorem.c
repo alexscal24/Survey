@@ -16,6 +16,7 @@ int main(void){
     }else{
         printf("The triangle is Acute.");
     }
+    return 0;
 }
 
  
