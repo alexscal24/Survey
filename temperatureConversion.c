@@ -117,6 +117,8 @@ int main(void){
         printf("%f %c converts to: \n"
                "\t %f F \n"
                "\t %f K \n", temp, tempVersion, tempf, tempk);
+        boolean = 0;
+        return boolean;
     }else if(tempVersion == 'K'){
         tempf = kelvinToFahrenheit(temp);
         tempc = kelvinToCelsius(temp);
@@ -124,5 +126,7 @@ int main(void){
         printf("%f %c converts to: \n"
                "\t %f F \n"
                "\t %f C \n", temp, tempVersion, tempf, tempc);
+        boolean = 0;
+        return boolean;
     }
 }// End of Main.
