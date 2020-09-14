@@ -2,8 +2,8 @@
 
 // Initialize variables.
 #define PI 3.1415926
-int radius, boolean;
-float circumference, area, diameter;
+int boolean;
+float circumference, area, diameter, radius;
 
 /*
  * Calculate the diameter using the user inputted radius.
@@ -14,7 +14,7 @@ float circumference, area, diameter;
  * Return:
  *      The diameter of the circle.
  */
-float diameterCalc(int radius){
+float diameterCalc(float radius){
     diameter = radius * 2;
     return diameter;
 }
@@ -28,7 +28,7 @@ float diameterCalc(int radius){
  * Return:
  *      The area of the circle.
  */
-float areaCalc(float diameter, int radius){
+float areaCalc(float diameter, float radius){
     area = PI * (radius * radius);
     return area;
 }
@@ -42,18 +42,18 @@ float areaCalc(float diameter, int radius){
  * Return:
  *      The circumference of the circle.
  */
-float circumferenceCalc(int radius){
+float circumferenceCalc(float radius){
     circumference = 2 * PI * radius;
     return circumference;
 }
 
 // Begin Main.
 int main(void){
-    printf("Enter the radius of the circle: \n");
-    scanf("%d", &radius);
-    printf("You inputted %d for the radius. \n", radius);
+    printf("Enter radius: ");
+    scanf("%f", &radius);
 
     if(radius < 0){ // Checks if the radius is less than 0, returns 1 if true and 0 if false.
+        printf("Invalid radius. Must be greater than zero.\n");
         boolean = 1;
         return boolean;
     }else{
@@ -65,10 +65,10 @@ int main(void){
             area = areaCalc(diameter, radius);
             circumference = circumferenceCalc(radius);
 
-            printf("A circle with radius %d: \n"
-                    "\t Diameter: %f \n"
-                    "\t Area: %f \n"
-                    "\t Circumference: %f \n",radius, diameter, area, circumference); // Print the results of the previous functions.
+            printf("A circle with radius %0.3f:\n"
+                    "\tDiameter: %0.3f\n"
+                    "\tArea: %0.3f\n"
+                    "\tCircumference: %0.3f\n",radius, diameter, area, circumference); // Print the results of the previous functions.
         }
 
     

@@ -30,7 +30,7 @@ unsigned int time_to_sec(unsigned int hours, unsigned int minutes, unsigned int 
  */
 void format_seconds(unsigned int hours, unsigned int minutes, unsigned int seconds) {
     unsigned int totalSeconds = time_to_sec(hours, minutes, seconds);
-    printf("%d hours, %d minutes and %d seconds is equal to %d seconds. \n", hours, minutes, seconds, totalSeconds);
+    printf("%d hours, %d minutes and %d seconds is equal to %d seconds.\n", hours, minutes, seconds, totalSeconds);
 }
 
 int main(void) {

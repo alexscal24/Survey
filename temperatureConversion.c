@@ -31,7 +31,8 @@ float fahrenheitToCelsius(float temp){
  *      The converted temperature in kelvin.
  */
 float fahrenheitToKelvin(float temp){
-    tempk = ((temp - CONVERSIONF) * (0.55555556)) + CONVERSIONK;
+    float tempC = fahrenheitToCelsius(temp);
+    tempk = tempC + CONVERSIONK;
     return tempk;
 }
 
@@ -93,39 +94,38 @@ float kelvinToCelsius(float temp){
 
 // Main Start.
 int main(void){
-    printf("Enter the temperature in the format of ##.## 'Type': \n");
+    printf("Enter input temperature: ");
     scanf("%f %c", &temp, &tempVersion); // Read in the degrees and type of temperature from user.
-    printf("You inputted %f %c \n", temp, tempVersion); // Repeat back to the user what they inputted.
 
-    if(tempVersion != 'F' && tempVersion != 'C' && tempVersion != 'K'){
-        printf("Invalid Temperature Scale.");
+    if(tempVersion != 'f' && tempVersion != 'c' && tempVersion != 'k' && tempVersion != 'F'){
+        printf("Invalid temperature scale\n");
         boolean = 1;
         return boolean;
-    }else if(tempVersion == 'F'){
+    }else if(tempVersion == 'f' || tempVersion == 'F'){
         tempc = fahrenheitToCelsius(temp); // Convert user inputted Fahrenheit to Celsius.
         tempk = fahrenheitToKelvin(temp); // Uses the converted temperature to convert the inputted Fahrenheit to Celsius.
 
-        printf("%f %c converts to: \n"
-               "\t %f C \n"
-               "\t %f K \n", temp, tempVersion, tempc, tempk); // Print the results of the previous functions.
+        printf("%0.2f Fahrenheit converts to:\n"
+               "\t%0.2f C\n"
+               "\t%0.2f K\n", temp, tempc, tempk); // Print the results of the previous functions.
         boolean = 0;
         return boolean;
-    }else if (tempVersion == 'C'){
+    }else if (tempVersion == 'c'){
         tempf = celsiusToFahrenheit(temp);
         tempk = celsiusToKelvin(temp);
 
-        printf("%f %c converts to: \n"
-               "\t %f F \n"
-               "\t %f K \n", temp, tempVersion, tempf, tempk);
+        printf("%0.2f Celsius converts to:\n"
+               "\t%0.2f F\n"
+               "\t%0.2f K\n", temp, tempf, tempk);
         boolean = 0;
         return boolean;
-    }else if(tempVersion == 'K'){
+    }else if(tempVersion == 'k'){
         tempf = kelvinToFahrenheit(temp);
         tempc = kelvinToCelsius(temp);
 
-        printf("%f %c converts to: \n"
-               "\t %f F \n"
-               "\t %f C \n", temp, tempVersion, tempf, tempc);
+        printf("%0.2f Kelvin converts to:\n"
+               "\t%0.2f C\n"
+               "\t%0.2f F\n", temp, tempc, tempf);
         boolean = 0;
         return boolean;
     }
