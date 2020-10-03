@@ -1,11 +1,10 @@
 #ifndef LIFE_H_
 #define LIFE_H_
 
-#define XSIZE	15
-#define YSIZE 	15
-#define DEFAULTROUNDS 15
 #define ALIVE	1
 #define	DEAD	0
+
+int XSIZE, YSIZE, DEFAULTROUNDS;
 
 // initialize the board to all dead cells
 void initBoard(int vBoard[][YSIZE]);

@@ -3,6 +3,9 @@
 #include "life.h"
 
 int main(int argc, char *argv[]) {
+	readDefaultRounds("numOfRounds.txt");
+	readBoardSize("boardSize.txt");
+
 	int board[XSIZE][YSIZE];
 	int rounds = DEFAULTROUNDS;
 
@@ -24,13 +27,49 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
+void readBoardSize(const char* boardSize){
+    FILE* file = fopen("boardSize.txt", "r");
+    if(file == NULL){
+        printf("Can't open file for reading.\n");
+    }else{
+        fscanf(file, "%d", &XSIZE);
+        fscanf(file, "%d", &YSIZE);
+        fclose(file);
+    }
+}
+
+void readDefaultRounds(const char* numOfRounds){
+    FILE* file = fopen("numOfRounds.txt", "r");
+    if(file == NULL){
+        printf("Can't open file for reading.\n");
+    }else{
+        fscanf(file, "%d", &DEFAULTROUNDS);
+        fclose(file);
+    }
+}
+
+void initialBoardState(const char* boardState, int vBoard[][YSIZE]){
+	FILE* file = fopen("boardState.txt", "r");
+	if(file == NULL){
+		printf("Can't open file for reading.\n");
+	}else{
+		for(int i = 0; i < XSIZE; i++){
+			for(int j = 0; j < YSIZE; j++){
+				fscanf(file, "%d", &vBoard[i][j]);
+			}
+		}
+		fclose(file);
+	}
+}
 
 void initBoard(int vBoard[][YSIZE]) {
-    for(int i = 0; i < XSIZE; i++){
-		for(int j = 0; j < YSIZE; j++){
-			vBoard[i][j] = DEAD;
-		}
-	}
+    //for(int i = 0; i < XSIZE; i++){
+		//for(int j = 0; j < YSIZE; j++){
+			//vBoard[i][j] = DEAD;
+		//}
+	//}
+
+	initialBoardState("boardState.txt", vBoard);
 }
 
 void playRound(int vBoard[][YSIZE]) {
